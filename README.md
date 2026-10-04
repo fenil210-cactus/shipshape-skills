@@ -1,6 +1,6 @@
 # Shipshape Skills
 
-Practical, self-contained skills for writing and reviewing production software. Each skill lives in its own directory, so this repository can grow without coupling unrelated workflows.
+Practical, self-contained skills for coding assistants that support `SKILL.md` packages. The instructions are assistant-neutral. Each skill lives in its own directory, so this repository can grow without coupling unrelated workflows.
 
 ## Skills
 
@@ -13,24 +13,29 @@ The two skills complement each other: `writing-good-tests` guides test creation;
 
 `test-audit` is adapted from [OpenClaw's test-audit skill](https://github.com/openclaw/openclaw/tree/main/.agents/skills/test-audit). Its original MIT copyright and permission notice is preserved in [`skills/test-audit/LICENSE`](skills/test-audit/LICENSE).
 
-## Install in Codex
+## Install in a coding assistant
 
-Copy the skill directories into your global Codex skills folder:
+Clone the repository and copy the skill directories into your assistant's personal skills folder:
+
+| Assistant | Personal skills folder |
+| --- | --- |
+| [Codex](https://developers.openai.com/blog/eval-skills) | `~/.codex/skills/` |
+| [Claude Code](https://code.claude.com/docs/en/skills) | `~/.claude/skills/` |
 
 ```sh
 git clone https://github.com/fenil210-cactus/shipshape-skills.git
-mkdir -p ~/.codex/skills
-cp -R shipshape-skills/skills/writing-good-tests ~/.codex/skills/
-cp -R shipshape-skills/skills/test-audit ~/.codex/skills/
+skills_destination="$HOME/.codex/skills" # use "$HOME/.claude/skills" for Claude Code
+mkdir -p "$skills_destination"
+cp -R shipshape-skills/skills/* "$skills_destination/"
 ```
 
-Restart Codex or start a new chat after installing so it discovers the skills. To update an installed skill, replace its directory with the latest version from this repository. Review a skill's instructions before using it in a project.
+For another coding assistant, use its documented skill directory if it supports `SKILL.md` packages. Start a new session after installing so the assistant discovers them. To update an installed skill, replace its directory with the latest version from this repository. Review a skill's instructions before using it in a project.
 
 ## Add a skill
 
 1. Create `skills/<skill-name>/SKILL.md` with YAML frontmatter containing a unique `name` and a clear `description` of when to use it. Match the directory and frontmatter names.
 2. Put optional guides and examples inside the same directory. Link to them with relative paths from `SKILL.md`.
-3. Keep the skill usable across repositories: remove hardcoded local paths, unavailable sibling skill calls, source-platform commands, and secrets.
+3. Keep the skill usable across repositories and coding assistants: remove hardcoded local paths, unavailable sibling skill calls, assistant-specific commands, and secrets.
 4. Add one row to the table above. Verify every relative link and try the skill on a representative task before publishing.
 
 Run `python3 scripts/check_skills.py` before pushing. CI runs the same check for every push and pull request.
