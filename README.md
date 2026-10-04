@@ -13,23 +13,56 @@ The two skills complement each other: `writing-good-tests` guides test creation;
 
 `test-audit` is adapted from [OpenClaw's test-audit skill](https://github.com/openclaw/openclaw/tree/main/.agents/skills/test-audit). Its original MIT copyright and permission notice is preserved in [`skills/test-audit/LICENSE`](skills/test-audit/LICENSE).
 
-## Install in a coding assistant
+## Install the skills
 
-Clone the repository and copy the skill directories into your assistant's personal skills folder:
+You can ask a coding assistant to install them, or use the commands below. The prompts name the [complete skill folders](https://github.com/fenil210-cactus/shipshape-skills/tree/main/skills), including their supporting files.
 
-| Assistant | Personal skills folder |
-| --- | --- |
-| [Codex](https://developers.openai.com/blog/eval-skills) | `~/.codex/skills/` |
-| [Claude Code](https://code.claude.com/docs/en/skills) | `~/.claude/skills/` |
+| Assistant | Personal/global location | Repository location |
+| --- | --- | --- |
+| [Codex](https://developers.openai.com/blog/eval-skills) | `~/.codex/skills/` | `.codex/skills/` |
+| [Claude Code](https://code.claude.com/docs/en/skills) | `~/.claude/skills/` | `.claude/skills/` |
+
+For another assistant that supports `SKILL.md`, use its documented skills location. To run the manual commands, clone this repository and enter it first:
 
 ```sh
 git clone https://github.com/fenil210-cactus/shipshape-skills.git
-skills_destination="$HOME/.codex/skills" # use "$HOME/.claude/skills" for Claude Code
-mkdir -p "$skills_destination"
-cp -R shipshape-skills/skills/* "$skills_destination/"
+cd shipshape-skills
 ```
 
-For another coding assistant, use its documented skill directory if it supports `SKILL.md` packages. Start a new session after installing so the assistant discovers them. To update an installed skill, replace its directory with the latest version from this repository. Review a skill's instructions before using it in a project.
+### Install globally
+
+Paste this prompt into your coding assistant:
+
+```text
+Install writing-good-tests and test-audit from https://github.com/fenil210-cactus/shipshape-skills/tree/main/skills into my personal/global skills directory for this coding assistant. Copy each complete skill folder, including its supporting files. Do not change the current repository. Tell me the installed paths when done.
+```
+
+Or run from the clone:
+
+```sh
+skills_destination="$HOME/.codex/skills" # use "$HOME/.claude/skills" for Claude Code
+mkdir -p "$skills_destination"
+cp -Rn skills/writing-good-tests skills/test-audit "$skills_destination/"
+```
+
+### Install in a repository
+
+Paste this prompt while working in the repository where you want the skills:
+
+```text
+Install writing-good-tests and test-audit from https://github.com/fenil210-cactus/shipshape-skills/tree/main/skills into this repository's project-scoped skills directory for the coding assistant I am using. Copy each complete skill folder, including its supporting files. Do not install them globally or overwrite existing skills. Tell me the installed paths when done.
+```
+
+Or run from the clone, naming the target repository:
+
+```sh
+project_dir="/absolute/path/to/your/repository"
+skills_destination="$project_dir/.codex/skills" # use "$project_dir/.claude/skills" for Claude Code
+mkdir -p "$skills_destination"
+cp -Rn skills/writing-good-tests skills/test-audit "$skills_destination/"
+```
+
+To install one skill, name only its link in the prompt or copy only its folder in the command. Start a new assistant session after installation so it discovers the skills.
 
 ## Add a skill
 
