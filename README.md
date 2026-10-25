@@ -8,6 +8,7 @@ Practical, self-contained skills for coding assistants that support `SKILL.md` p
 | --- | --- | --- |
 | [writing-good-tests](skills/writing-good-tests/SKILL.md) | Writing a small set of behavior-focused tests with meaningful regression protection | `SKILL.md`, `references/examples.md` |
 | [test-audit](skills/test-audit/SKILL.md) | Reviewing existing tests and removing weak or duplicate coverage without losing contracts | `SKILL.md`, `CAMPAIGN.md` |
+| [build-portfolio-site](skills/build-portfolio-site/SKILL.md) | Building a personal portfolio end to end: brief, design, copy, Cloudflare deploy, domain, profiles, and SEO/GEO | `SKILL.md`, `references/` (brief and prompts, design and copy, Cloudflare, repo and profiles, SEO/GEO, pitfalls) |
 
 The two skills complement each other: `writing-good-tests` guides test creation; `test-audit` provides a more detailed audit and cleanup workflow.
 
@@ -34,7 +35,7 @@ cd shipshape-skills
 Paste this prompt into your coding assistant:
 
 ```text
-Install writing-good-tests and test-audit from https://github.com/fenil210-cactus/shipshape-skills/tree/main/skills into my personal/global skills directory for this coding assistant. Copy each complete skill folder, including its supporting files. Do not change the current repository. Tell me the installed paths when done.
+Install writing-good-tests, test-audit and build-portfolio-site from https://github.com/fenil210-cactus/shipshape-skills/tree/main/skills into my personal/global skills directory for this coding assistant. Copy each complete skill folder, including its supporting files. Do not change the current repository. Tell me the installed paths when done.
 ```
 
 Or run from the clone:
@@ -42,7 +43,7 @@ Or run from the clone:
 ```sh
 skills_destination="$HOME/.codex/skills" # use "$HOME/.claude/skills" for Claude Code
 mkdir -p "$skills_destination"
-cp -Rn skills/writing-good-tests skills/test-audit "$skills_destination/"
+cp -Rn skills/writing-good-tests skills/test-audit skills/build-portfolio-site "$skills_destination/"
 ```
 
 ### Install in a repository
@@ -50,7 +51,7 @@ cp -Rn skills/writing-good-tests skills/test-audit "$skills_destination/"
 Paste this prompt while working in the repository where you want the skills:
 
 ```text
-Install writing-good-tests and test-audit from https://github.com/fenil210-cactus/shipshape-skills/tree/main/skills into this repository's project-scoped skills directory for the coding assistant I am using. Copy each complete skill folder, including its supporting files. Do not install them globally or overwrite existing skills. Tell me the installed paths when done.
+Install writing-good-tests, test-audit and build-portfolio-site from https://github.com/fenil210-cactus/shipshape-skills/tree/main/skills into this repository's project-scoped skills directory for the coding assistant I am using. Copy each complete skill folder, including its supporting files. Do not install them globally or overwrite existing skills. Tell me the installed paths when done.
 ```
 
 Or run from the clone, naming the target repository:
@@ -59,7 +60,7 @@ Or run from the clone, naming the target repository:
 project_dir="/absolute/path/to/your/repository"
 skills_destination="$project_dir/.codex/skills" # use "$project_dir/.claude/skills" for Claude Code
 mkdir -p "$skills_destination"
-cp -Rn skills/writing-good-tests skills/test-audit "$skills_destination/"
+cp -Rn skills/writing-good-tests skills/test-audit skills/build-portfolio-site "$skills_destination/"
 ```
 
 To install one skill, name only its link in the prompt or copy only its folder in the command. Start a new assistant session after installation so it discovers the skills.
