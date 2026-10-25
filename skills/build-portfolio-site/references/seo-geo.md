@@ -1,6 +1,6 @@
 # Search and AI visibility
 
-Run this after the site is live. Measure first, then change, then measure again. No one can promise a ranking; the aim is for the site to be complete, crawlable and accurate, so search engines and AI tools can find it and describe it correctly.
+Run sections 1 and 3 to 6 before deployment, on the local production preview, with the chosen domain set in the site config. Run sections 2 and 7 after the site is live. Measure first, then change, then measure again. No one can promise a ranking; the aim is for the site to be complete, crawlable and accurate, so search engines and AI tools can find it and describe it correctly.
 
 ## 1. Baseline
 
