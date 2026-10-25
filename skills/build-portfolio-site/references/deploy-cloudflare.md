@@ -41,7 +41,7 @@ If the first build fails, read the build log. The usual causes are a missing `di
 
 ## 3. Custom domain
 
-1. Buy the domain. Cloudflare Registrar sells domains at cost, with no markup. Any registrar works; if you use another one, point its nameservers at Cloudflare.
+1. The owner buys the domain themselves; give them the steps and wait for them to confirm the domain name. Never enter payment details or ask for account credentials.
 2. In the Worker's settings, open **Domains & Routes**, then **Add**, then **Custom domain**. Enter the bare domain, for example `example.com`. Cloudflare creates the DNS record.
 3. Open the new address in a private browser window and confirm the site loads over HTTPS.
 
